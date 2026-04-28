@@ -1,25 +1,34 @@
 public class TicTacToe {
-    static char[][] board = new char[3][3];
+
+    static boolean isHumanTurn = true;
+    static boolean gameOver = false;
+
     public static void main(String[] args) {
-        initializeBoard();
-        printBoard();
-    }
-    static void initializeBoard() {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                board[row][col] = '-';
+
+        while (!gameOver) {
+
+            if (isHumanTurn) {
+                System.out.println("Human turn");
+            } else {
+                System.out.println("Computer turn");
             }
-        }
-    }
-    static void printBoard() {
-        System.out.println("-------------");
-        for (int row = 0; row < 3; row++) {
-            System.out.print("| ");
-            for (int col = 0; col < 3; col++) {
-                System.out.print(board[row][col] + " | ");
+
+            if (checkWin() || checkDraw()) {
+                gameOver = true;
+                break;
             }
-            System.out.println();
-            System.out.println("-------------");
+
+            isHumanTurn = !isHumanTurn;
         }
+
+        System.out.println("Game Over");
+    }
+
+    static boolean checkWin() {
+        return false;
+    }
+
+    static boolean checkDraw() {
+        return false;
     }
 }
