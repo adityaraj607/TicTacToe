@@ -1,25 +1,33 @@
 public class TicTacToe {
+
     static char[][] board = new char[3][3];
+
     public static void main(String[] args) {
-        initializeBoard();
-        printBoard();
+        System.out.println(hasWon('X'));
     }
-    static void initializeBoard() {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                board[row][col] = '-';
+
+    static boolean hasWon(char symbol) {
+
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol) {
+                return true;
             }
         }
-    }
-    static void printBoard() {
-        System.out.println("-------------");
-        for (int row = 0; row < 3; row++) {
-            System.out.print("| ");
-            for (int col = 0; col < 3; col++) {
-                System.out.print(board[row][col] + " | ");
+
+        for (int j = 0; j < 3; j++) {
+            if (board[0][j] == symbol && board[1][j] == symbol && board[2][j] == symbol) {
+                return true;
             }
-            System.out.println();
-            System.out.println("-------------");
         }
+
+        if (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) {
+            return true;
+        }
+
+        if (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol) {
+            return true;
+        }
+
+        return false;
     }
 }
